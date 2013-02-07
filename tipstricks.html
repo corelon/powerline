@@ -1,0 +1,153 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Tips &amp; Tricks &mdash; Powerline beta documentation</title>
+    
+    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     'beta',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Powerline beta documentation" href="index.html" />
+    <link rel="next" title="Font patching" href="fontpatching.html" />
+    <link rel="prev" title="Configuration" href="configuration.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="fontpatching.html" title="Font patching"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="configuration.html" title="Configuration"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Powerline beta documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="tips-tricks">
+<h1>Tips &amp; Tricks<a class="headerlink" href="#tips-tricks" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="vim">
+<h2>Vim<a class="headerlink" href="#vim" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="fix-terminal-timeout-when-pressing-escape">
+<h3>Fix terminal timeout when pressing escape<a class="headerlink" href="#fix-terminal-timeout-when-pressing-escape" title="Permalink to this headline">¶</a></h3>
+<p>When you&#8217;re pressing <tt class="kbd docutils literal"><span class="pre">Escape</span></tt> to leave insert mode in the terminal, it
+will by default take a second or another keystroke to leave insert mode
+completely and update the statusline. If you find this annoying, you can add
+the following snippet to your <tt class="file docutils literal"><span class="pre">vimrc</span></tt> to escape insert mode
+immediately:</p>
+<div class="highlight-vim"><div class="highlight"><pre><span class="k">if</span> <span class="p">!</span> has<span class="p">(</span><span class="s1">&#39;gui_running&#39;</span><span class="p">)</span>
+    <span class="k">set</span> <span class="nb">ttimeoutlen</span><span class="p">=</span><span class="m">10</span>
+    augroup FastEscape
+        autocmd<span class="p">!</span>
+        <span class="k">au</span> <span class="nb">InsertEnter</span> * <span class="k">set</span> <span class="nb">timeoutlen</span><span class="p">=</span><span class="m">0</span>
+        <span class="k">au</span> <span class="nb">InsertLeave</span> * <span class="k">set</span> <span class="nb">timeoutlen</span><span class="p">=</span><span class="m">1000</span>
+    augroup END
+<span class="k">endif</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="useful-settings">
+<h3>Useful settings<a class="headerlink" href="#useful-settings" title="Permalink to this headline">¶</a></h3>
+<p>You may find the following vim settings useful when using the Powerline
+statusline:</p>
+<div class="highlight-vim"><div class="highlight"><pre><span class="k">set</span> <span class="nb">laststatus</span><span class="p">=</span><span class="m">2</span> <span class="c">&quot; Always display the statusline in all windows</span>
+<span class="k">set</span> <span class="nb">noshowmode</span> <span class="c">&quot; Hide the default mode text (e.g. -- INSERT -- below the statusline)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Tips &amp; Tricks</a><ul>
+<li><a class="reference internal" href="#vim">Vim</a><ul>
+<li><a class="reference internal" href="#fix-terminal-timeout-when-pressing-escape">Fix terminal timeout when pressing escape</a></li>
+<li><a class="reference internal" href="#useful-settings">Useful settings</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="configuration.html"
+                        title="previous chapter">Configuration</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="fontpatching.html"
+                        title="next chapter">Font patching</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/tipstricks.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="fontpatching.html" title="Font patching"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="configuration.html" title="Configuration"
+             >previous</a> |</li>
+        <li><a href="index.html">Powerline beta documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright Kim Silkebækken.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>
