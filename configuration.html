@@ -284,11 +284,6 @@ in the <a class="reference internal" href="#config-themes-seg-name"><em>name opt
 <a class="reference internal" href="#config-themes-seg-contents"><em>contents option</em></a>, and the
 highlighting group is defined in the <a class="reference internal" href="#config-themes-seg-highlight-group"><em>highlight_group
 option</em></a>.</dd>
-<dt><tt class="docutils literal"><span class="pre">filler</span></tt></dt>
-<dd>If the statusline is rendered with a specific width, remaining
-whitespace is distributed among filler segments. The
-highlighting group is defined in the <a class="reference internal" href="#config-themes-seg-highlight-group"><em>highlight_group
-option</em></a>.</dd>
 </dl>
 </dd>
 <dt><tt class="docutils literal"><span class="pre">module</span></tt></dt>
@@ -313,12 +308,17 @@ available in the colorscheme is used.</p>
 </dd>
 <dt><tt class="docutils literal"><span class="pre">args</span></tt></dt>
 <dd>A dict of arguments to be passed to a <tt class="docutils literal"><span class="pre">function</span></tt> segment.</dd>
-<dt><tt class="docutils literal"><span class="pre">ljust</span></tt></dt>
-<dd>If set, the segment will be left justified to the width specified by
-this option.</dd>
-<dt><tt class="docutils literal"><span class="pre">rjust</span></tt></dt>
-<dd>If set, the segment will be right justified to the width specified
-by this option.</dd>
+<dt><tt class="docutils literal"><span class="pre">align</span></tt></dt>
+<dd>Aligns the segments contents to the left (<tt class="docutils literal"><span class="pre">l</span></tt>), center (<tt class="docutils literal"><span class="pre">c</span></tt>) or
+right (<tt class="docutils literal"><span class="pre">r</span></tt>).</dd>
+<dt><tt class="docutils literal"><span class="pre">width</span></tt></dt>
+<dd><p class="first">Enforces a specific width for this segment.</p>
+<p class="last">This segment will work as a spacer if the width is set to <tt class="docutils literal"><span class="pre">auto</span></tt>.
+Several spacers may be used, and the space will be distributed
+equally among all the spacer segments. Spacers may have contents,
+either returned by a function or a static string, and the contents
+can be aligned with the <tt class="docutils literal"><span class="pre">align</span></tt> property.</p>
+</dd>
 <dt><tt class="docutils literal"><span class="pre">priority</span></tt></dt>
 <dd><p class="first">Optional segment priority. Segments with priority <tt class="docutils literal"><span class="pre">-1</span></tt> (the
 default priority) will always be included, regardless of the width

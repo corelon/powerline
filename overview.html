@@ -198,21 +198,15 @@ recommended for optimal performance and extra features:</p>
 <h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="vim-statusline">
 <h3>Vim statusline<a class="headerlink" href="#vim-statusline" title="Permalink to this headline">¶</a></h3>
-<p>Add the following line to your <tt class="file docutils literal"><span class="pre">vimrc</span></tt>:</p>
-<div class="highlight-vim"><div class="highlight"><pre>python from powerline.bindings.<span class="k">vim</span> import source_plugin; source_plugin<span class="p">()</span>
+<p>Add the following line to your <tt class="file docutils literal"><span class="pre">vimrc</span></tt>, where <tt class="docutils literal"><span class="pre">{path}</span></tt> is the
+absolute path to your Powerline installation directory:</p>
+<div class="highlight-vim"><div class="highlight"><pre><span class="k">set</span> <span class="nb">rtp</span><span class="p">+=</span>{<span class="nb">path</span>}<span class="sr">/powerline/</span>bindings/<span class="k">vim</span>
 </pre></div>
 </div>
-<p>If you want to enable Python 3 support, substitute the <tt class="docutils literal"><span class="pre">python</span></tt> command
-above with <tt class="docutils literal"><span class="pre">python3</span></tt>. Note that this is somewhat experimental as some
-segments don&#8217;t have support for Python 3 yet.</p>
-<p>If Powerline is installed somewhere other than Python&#8217;s site-packages
-directories you&#8217;ll either have to use a plugin manager like Vundle, or
-source the vim plugin file with an absolute path to the plugin location.</p>
-<p>Add the following line to your <tt class="file docutils literal"><span class="pre">vimrc</span></tt>, where <tt class="docutils literal"><span class="pre">{path}</span></tt> is the path
-to the main Powerline project directory:</p>
-<div class="highlight-vim"><div class="highlight"><pre>source {<span class="nb">path</span>}<span class="sr">/powerline/</span>bindings<span class="sr">/vim/</span>plugin/source_plugin.<span class="k">vim</span>
-</pre></div>
-</div>
+<p>If you&#8217;re using Vundle or Pathogen and don&#8217;t want Powerline functionality in
+any other applications, simply add Powerline as a bundle and point the path
+above to the Powerline bundle directory, e.g.
+<tt class="docutils literal"><span class="pre">~/.vim/bundle/powerline/powerline/bindings/vim</span></tt>.</p>
 </div>
 <div class="section" id="shell-prompts">
 <h3>Shell prompts<a class="headerlink" href="#shell-prompts" title="Permalink to this headline">¶</a></h3>
@@ -232,15 +226,16 @@ absolute path to your Powerline installation directory:</p>
 </pre></div>
 </div>
 </div>
+</div>
 <div class="section" id="tmux-statusline">
-<h4>Tmux statusline<a class="headerlink" href="#tmux-statusline" title="Permalink to this headline">¶</a></h4>
+<h3>Tmux statusline<a class="headerlink" href="#tmux-statusline" title="Permalink to this headline">¶</a></h3>
 <p>Add the following line to your <tt class="file docutils literal"><span class="pre">tmux.conf</span></tt>, where <tt class="docutils literal"><span class="pre">{path}</span></tt> is the
 absolute path to your Powerline installation directory:</p>
 <div class="highlight-python"><pre>source '{path}/powerline/bindings/tmux/powerline.conf'</pre>
 </div>
 </div>
 <div class="section" id="ipython-prompt">
-<h4>IPython prompt<a class="headerlink" href="#ipython-prompt" title="Permalink to this headline">¶</a></h4>
+<h3>IPython prompt<a class="headerlink" href="#ipython-prompt" title="Permalink to this headline">¶</a></h3>
 <p>For IPython&lt;0.11 add the following lines to your
 <tt class="file docutils literal"><span class="pre">.ipython/ipy_user_conf.py</span></tt>:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="c"># top</span>
@@ -261,7 +256,6 @@ file in the profile you are using:</p>
 <p>IPython=0.11* is not supported and does not work. IPython&lt;0.10 was not
 tested (not installable by pip).</p>
 </div>
-</div>
 <div class="section" id="awesome-widget">
 <h3>Awesome widget<a class="headerlink" href="#awesome-widget" title="Permalink to this headline">¶</a></h3>
 <div class="admonition note">
@@ -281,6 +275,24 @@ path to your Powerline installation directory:</p>
 </div>
 <p>Then add the <tt class="docutils literal"><span class="pre">powerline_widget</span></tt> to your <tt class="docutils literal"><span class="pre">wibox</span></tt>:</p>
 <div class="highlight-lua"><div class="highlight"><pre><span class="n">right_layout</span><span class="p">:</span><span class="n">add</span><span class="p">(</span><span class="n">powerline_widget</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="qtile-widget">
+<h3>Qtile widget<a class="headerlink" href="#qtile-widget" title="Permalink to this headline">¶</a></h3>
+<p>Add the following to your <tt class="file docutils literal"><span class="pre">~/.config/qtile/config.py</span></tt>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">powerline.bindings.qtile.widget</span> <span class="kn">import</span> <span class="n">Powerline</span>
+
+<span class="n">screens</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">Screen</span><span class="p">(</span>
+        <span class="n">top</span><span class="o">=</span><span class="n">bar</span><span class="o">.</span><span class="n">Bar</span><span class="p">([</span>
+                <span class="c"># ...</span>
+                <span class="n">Powerline</span><span class="p">(</span><span class="n">timeout</span><span class="o">=</span><span class="mi">2</span><span class="p">),</span>
+                <span class="c"># ...</span>
+            <span class="p">],</span>
+        <span class="p">),</span>
+    <span class="p">),</span>
+<span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -308,11 +320,12 @@ path to your Powerline installation directory:</p>
 <li><a class="reference internal" href="#shell-prompts">Shell prompts</a><ul>
 <li><a class="reference internal" href="#bash-prompt">Bash prompt</a></li>
 <li><a class="reference internal" href="#zsh-prompt">Zsh prompt</a></li>
-<li><a class="reference internal" href="#tmux-statusline">Tmux statusline</a></li>
-<li><a class="reference internal" href="#ipython-prompt">IPython prompt</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#tmux-statusline">Tmux statusline</a></li>
+<li><a class="reference internal" href="#ipython-prompt">IPython prompt</a></li>
 <li><a class="reference internal" href="#awesome-widget">Awesome widget</a></li>
+<li><a class="reference internal" href="#qtile-widget">Qtile widget</a></li>
 </ul>
 </li>
 </ul>
